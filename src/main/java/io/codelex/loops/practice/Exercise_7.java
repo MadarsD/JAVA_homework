@@ -15,23 +15,22 @@ public class Exercise_7 {
         System.out.println("Welcome to Piglet!");
         while (rollAgain) {
             int roll = (int) Math.floor(Math.random() * 6) + 1;
+            System.out.println("You rolled a " + roll);
 
             if (roll == 1) {
-                System.out.println("You rolled a " + roll);
-                System.out.println("You got 0 points.");
+                totalPoints = 0;
                 rollAgain = false;
             } else {
-                System.out.println("You rolled a " + roll);
                 totalPoints += roll;
 
                 System.out.println("Roll again? Type yes or no");
                 String decision = sc.nextLine().toLowerCase(Locale.ROOT);
 
                 if (decision.equals("no")) {
-                    System.out.println("You got " + totalPoints + " points.");
-                    break;
+                    rollAgain = false;
                 }
             }
         }
+        System.out.println("You got " + totalPoints + " points.");
     }
 }
