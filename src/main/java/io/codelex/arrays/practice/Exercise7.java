@@ -11,13 +11,9 @@ public class Exercise7 {
         char player1 = 'X';
         char player2 = 'O';
 
-        //Izveidoju laukumu
-        char[][] ticTacToe = new char[3][3];
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                ticTacToe[i][j] = '-';
-            }
-        }
+
+        char[][] ticTacToe = buildTicTacToe();
+
         boolean gameEnd = false;
         char currentPlayer = player1;
 
@@ -77,8 +73,18 @@ public class Exercise7 {
         }
     }
 
+    private static char[][] buildTicTacToe() {
+        char[][] ticTacToe = new char[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                ticTacToe[i][j] = '-';
+            }
+        }
+        return ticTacToe;
+    }
+
     //Metode, kas izvada laukumu!
-    public static void displayBoard(char[][] arr) {
+    private static void displayBoard(char[][] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
                 if (j == arr[i].length - 1) System.out.print(arr[i][j]);
@@ -89,7 +95,7 @@ public class Exercise7 {
     }
 
     //Metode, kas pārbauda visas uzvaras situācijas
-    public static boolean playerHasWon(char[][] arr) {
+    private static boolean playerHasWon(char[][] arr) {
         return (arr[0][1] != '-' && arr[0][0] == arr[0][1] && arr[0][0] == arr[0][2]) ||
                 (arr[1][1] != '-' && arr[0][0] == arr[1][1] && arr[0][0] == arr[2][2]) ||
                 (arr[1][0] != '-' && arr[0][0] == arr[1][0] && arr[0][0] == arr[2][0]) ||
@@ -102,7 +108,7 @@ public class Exercise7 {
     }
 
     //Metode, kas pārbauda vai laukums nav pilns un nosaka neizšķirtu
-    public static boolean boardIsFull(char[][] arr) {
+    private static boolean boardIsFull(char[][] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[0].length; j++) {
                 if (arr[i][j] != 'X' && arr[i][j] != 'O') {

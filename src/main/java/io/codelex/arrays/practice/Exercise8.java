@@ -10,7 +10,7 @@ public class Exercise8 {
         Scanner scanner = new Scanner(System.in);
         StringBuilder usedLetters = new StringBuilder();
 
-        String[] words = {
+         final String[] words = {
                 "elephant", "garbage", "package", "exercise", "resources", "homework",
                 "computer", "sausage", "hangman"
         };
@@ -79,8 +79,7 @@ public class Exercise8 {
     public static String getRandomName(String[] arr) {
         Random random = new Random();
         int randomId = random.nextInt(arr.length);
-        String randomWord = arr[randomId];
-        return randomWord;
+        return arr[randomId];
     }
 
     //Metode lai izvadītu char masīvu
