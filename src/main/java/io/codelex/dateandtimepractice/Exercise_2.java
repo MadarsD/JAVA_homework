@@ -16,7 +16,7 @@ public class Exercise_2 {
         int x = 14;
 
         for (LocalDate date = startDate; date.isBefore(startDate.plusMonths(1).plusDays(1)); date = date.plusDays(x)) {
-            System.out.println("Next server update: " + startDate.plusDays(x-1));
+            System.out.println("Next server update: " + startDate.plusDays(x));
             x += 14;
         }
     }
