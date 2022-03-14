@@ -22,8 +22,10 @@ public class DatePeriod {
 
     @Override
     public String toString() {
-        return "overlap start date " + start.getDayOfMonth() + "." + start.getMonthValue() + "." + start.getYear()
-                + " and end date " + end.getDayOfMonth() + "." + end.getMonthValue() + "." + end.getYear();
+
+
+        return "overlap start date " + String.format("%02d",start.getDayOfMonth()) + "." + String.format("%02d",start.getMonthValue()) + "." + start.getYear()
+                + " and end date " + String.format("%02d",end.getDayOfMonth()) + "." + String.format("%02d",end.getMonthValue()) + "." + end.getYear();
     }
 
     public DatePeriod intersection(DatePeriod period) {
