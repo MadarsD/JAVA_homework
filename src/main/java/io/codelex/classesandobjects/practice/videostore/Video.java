@@ -1,8 +1,8 @@
 package io.codelex.classesandobjects.practice.videostore;
 
 public class Video {
-    private String title;
-    private boolean checkedOut;
+    private final String title;
+    private boolean checkedOut = false;
     private int userRating;
     private int ratingCount = 0;
 
@@ -15,12 +15,12 @@ public class Video {
         return title;
     }
 
-    public void isCheckedOut() {
-        this.checkedOut = true;
+    public boolean isCheckedOut() {
+        return this.checkedOut;
     }
 
-    public void isReturned() {
-        this.checkedOut = false;
+    public void setCheckedOut(boolean checkedOut) {
+        this.checkedOut = checkedOut;
     }
 
     public void receiveRating(int rating) {
@@ -32,7 +32,4 @@ public class Video {
         return userRating/ratingCount;
     }
 
-    public boolean checkoutStatus(){
-        return checkedOut;
-    }
 }

@@ -15,12 +15,9 @@ public class swapPoints_exercise9 {
     }
 
     public static void swapPoints(Point one, Point two){
-        double tempOneX = one.getX();
-        double tempOneY = one.getY();
-        double tempTwoX = two.getX();
-        double tempTwoY = two.getY();
-        one.setLocation(tempTwoX, tempTwoY);
-        two.setLocation(tempOneX, tempOneY);
-
+        double tempOneX = two.getX();
+        double tempOneY = two.getY();
+        two.setLocation(one);
+        one.setLocation(tempOneX, tempOneY);
     }
 }

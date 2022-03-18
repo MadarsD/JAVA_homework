@@ -1,7 +1,8 @@
 package io.codelex.classesandobjects.practice.Exercise_3;
 
 public class Odometer {
-    private static int mileage;
+    private int mileage;
+    private static final int odometerCapacity = 999999;
 
     public Odometer(int mileage) {
         this.mileage = mileage;
@@ -11,27 +12,27 @@ public class Odometer {
         this.mileage = mileage;
     }
 
-    public static int getMileage() {
+    public int getMileage() {
         return mileage;
     }
 
-    public static void incrementMileage(){
-        if(mileage < 999999){
+    public void incrementMileage(){
+        if(mileage < odometerCapacity){
             mileage++;
         } else {
             mileage = 0;
         }
     }
 
-    public static void decreaseFuel(){
+    public void decreaseFuel(FuelGauge fuelGauge){
         int temp = 10;
         while(temp > 0){
             incrementMileage();
-            System.out.println("Current mileage: " + Odometer.getMileage() + ". Remaining fuel = " + FuelGauge.getFuel());
+            System.out.println("Current mileage: " + getMileage() + ". Remaining fuel = " + fuelGauge.getFuel());
             temp--;
         }
         if(temp == 0){
-            FuelGauge.burnFuel();
+            fuelGauge.burnFuel();
         }
 
     }

@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class VideoStoreTest {
     private static final int COUNT_OF_MOVIES = 3;
-    private static VideoStore store = new VideoStore();
+    private static final VideoStore store = new VideoStore();
 
     public static void main(String[] args) {
         final Scanner keyboard = new Scanner(System.in);
