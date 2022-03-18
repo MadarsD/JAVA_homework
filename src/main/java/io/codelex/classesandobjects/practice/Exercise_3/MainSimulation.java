@@ -14,7 +14,7 @@ public class MainSimulation {
         System.out.println(fuelGauge.getFuel());
 
         while(fuelGauge.getFuel() != 0){
-            Odometer.decreaseFuel();
+            odometer.decreaseFuel(fuelGauge);
         }
 
 

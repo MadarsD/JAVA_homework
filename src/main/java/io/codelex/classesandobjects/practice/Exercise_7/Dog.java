@@ -1,14 +1,12 @@
 package io.codelex.classesandobjects.practice.Exercise_7;
 
-import java.util.Objects;
-
 public class Dog {
-    private String name;
-    private String sex;
+    private final String name;
+    public Sex sex;
     private String mother;
     private String father;
 
-    public Dog(String name, String sex) {
+    public Dog(String name, Sex sex) {
         this.name = name;
         this.sex = sex;
     }
@@ -29,8 +27,8 @@ public class Dog {
         return father;
     }
 
-    public String fathersName(){
-        if(father == null){
+    public String fathersName() {
+        if (father == null) {
             return "Unknown";
         }
         return getFather();
@@ -38,7 +36,10 @@ public class Dog {
 
 
     public boolean hasSameMotherAs(Dog otherDog) {
-        return  this.mother.equals(otherDog.getMother());
+        if (this.mother == null) {
+            return false;
+        }
+        return this.mother.equals(otherDog.getMother());
     }
 
     @Override

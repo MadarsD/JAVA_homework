@@ -2,14 +2,14 @@ package io.codelex.classesandobjects.practice.Exercise_7;
 
 public class DogTest {
     public static void main(String[] args) {
-        Dog max = new Dog("Max", "male");
-        Dog rocky = new Dog("Rocky", "male");
-        Dog sparkly = new Dog("Sparkly", "male");
-        Dog buster = new Dog("Buster", "male");
-        Dog sam = new Dog("Sam", "male");
-        Dog lady = new Dog("Lady", "female");
-        Dog molly = new Dog("Molly", "female");
-        Dog coco = new Dog("Coco", "female");
+        Dog max = new Dog("Max", Sex.MALE);
+        Dog rocky = new Dog("Rocky", Sex.MALE);
+        Dog sparkly = new Dog("Sparkly", Sex.MALE);
+        Dog buster = new Dog("Buster", Sex.MALE);
+        Dog sam = new Dog("Sam", Sex.MALE);
+        Dog lady = new Dog("Lady", Sex.FEMALE);
+        Dog molly = new Dog("Molly", Sex.FEMALE);
+        Dog coco = new Dog("Coco", Sex.FEMALE);
 
         max.setMother("Lady");
         max.setFather("Rocky");
@@ -20,10 +20,16 @@ public class DogTest {
         buster.setMother("Lady");
         buster.setFather("Sparkly");
 
+        System.out.println(lady);
+        System.out.println(molly);
+
         System.out.println(coco.fathersName());
         System.out.println(sparkly.fathersName());
 
         System.out.println(coco.hasSameMotherAs(rocky));
+        System.out.println(coco.hasSameMotherAs(max));
+        System.out.println(sam.hasSameMotherAs(max));
+
     }
 
 }
