@@ -1,6 +1,7 @@
 package io.codelex.dateandtimepractice;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class DatePeriod {
 
@@ -22,23 +23,21 @@ public class DatePeriod {
 
     @Override
     public String toString() {
-
-
-        return "overlap start date " + String.format("%02d",start.getDayOfMonth()) + "." + String.format("%02d",start.getMonthValue()) + "." + start.getYear()
-                + " and end date " + String.format("%02d",end.getDayOfMonth()) + "." + String.format("%02d",end.getMonthValue()) + "." + end.getYear();
+        return "overlap start date " + String.format("%02d", start.getDayOfMonth()) + "." + String.format("%02d", start.getMonthValue()) + "." + start.getYear()
+                + " and end date " + String.format("%02d", end.getDayOfMonth()) + "." + String.format("%02d", end.getMonthValue()) + "." + end.getYear();
     }
 
     public DatePeriod intersection(DatePeriod period) {
-        if (this.end.isBefore(period.getStart()) || period.getEnd().isBefore(this.start)) {
+        if (notOverLapping(period)) {
             return null;
+        } else if (completelyIncludes(period)) {
+            return new DatePeriod(this.start, this.end);
         } else if (this.end.isEqual(period.getStart())) {
             return new DatePeriod(this.end, period.getStart());
         } else if (this.start.isEqual(period.getEnd())) {
             return new DatePeriod(this.start, period.getEnd());
         } else if (this.start.isBefore(period.getStart()) && this.end.isAfter(period.getEnd())) {
             return new DatePeriod(period.getStart(), period.getEnd());
-        } else if (this.start.isAfter(period.getStart()) && this.end.isBefore(period.getEnd())) {
-            return new DatePeriod(this.start, this.end);
         } else {
             LocalDate startOverlap = null;
             LocalDate endOverlap = null;
@@ -53,21 +52,14 @@ public class DatePeriod {
         }
         return period;
     }
-    /*
-    if (firstEnd.isBefore(secondStart) || secondEnd.isBefore(firstStart)) {
-        System.out.println("No overlap");
-    } else {
-        LocalDate startOverlap = null;
-        LocalDate endOverlap = null;
-        if(secondStart.isBefore(firstEnd)){
-            startOverlap = secondStart;
-            endOverlap = firstEnd;
-        } else if (secondEnd.isAfter(firstEnd)){
-            startOverlap = firstStart;
-            endOverlap = secondEnd;
-        }
-        System.out.println("start overlap " + startOverlap + " and end overlap " + endOverlap);
+
+    public boolean notOverLapping(DatePeriod period) {
+        return this.end.isBefore(period.getStart()) || period.getEnd().isBefore(this.start);
     }
-     */
+
+    public boolean completelyIncludes(DatePeriod period){
+        return this.start.isAfter(period.getStart()) && this.end.isBefore(period.getEnd());
+    }
+
 }
 
