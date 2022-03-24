@@ -8,8 +8,8 @@ public class DatePeriodTest {
         LocalDate firstEnd = LocalDate.of(2022, 1, 15);
         DatePeriod firstPeriod = new DatePeriod(firstStart, firstEnd);
 
-        LocalDate secondStart = LocalDate.of(2022, 1, 10);
-        LocalDate secondEnd = LocalDate.of(2022, 1, 25);
+        LocalDate secondStart = LocalDate.of(2022, 1, 2);
+        LocalDate secondEnd = LocalDate.of(2022, 1, 12);
         DatePeriod secondPeriod = new DatePeriod(secondStart, secondEnd);
 
         DatePeriod overlap = firstPeriod.intersection(secondPeriod);
