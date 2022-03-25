@@ -1,6 +1,6 @@
-package io.codelex.enums.practice.exercise_2;
+package io.codelex.enums.practice.exercise2;
 
-import java.util.Objects;
+import java.util.Random;
 
 public enum Move {
     ROCK("t"),
@@ -19,9 +19,16 @@ public enum Move {
 
     public static Move getMoveEnum(String move) {
         for (Move m : Move.values()) {
-            if (m.move.equals(move)) return m;
+            if (m.move.equals(move)) {
+                return m;
+            }
         }
         return null;
     }
 
+    static String getComputerMove() {
+        Random random = new Random();
+        int randomNumber = random.nextInt(3);
+        return Move.values()[randomNumber].getMove();
+    }
 }
