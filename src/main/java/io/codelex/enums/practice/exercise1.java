@@ -1,6 +1,6 @@
 package io.codelex.enums.practice;
 
-public class exercise_1 {
+public class exercise1 {
 
     private enum CardinalPoints {
         NORTH("up", 0),

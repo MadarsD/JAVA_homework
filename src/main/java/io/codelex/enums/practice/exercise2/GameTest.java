@@ -1,4 +1,4 @@
-package io.codelex.enums.practice.exercise_2;
+package io.codelex.enums.practice.exercise2;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -31,7 +31,7 @@ public class GameTest {
                 continue;
             }
 
-            String computerMove = getComputerMove();
+            String computerMove = Move.getComputerMove();
 
             if (move.equals(computerMove)) {
                 System.out.println("My turn:" + Move.getMoveEnum(move));
@@ -51,11 +51,6 @@ public class GameTest {
         }
     }
 
-    private static String getComputerMove() {
-        Random random = new Random();
-        int randomNumber = random.nextInt(3);
-        return Move.values()[randomNumber].getMove();
-    }
 
     private static boolean doesPlayerWin(String playerMove, String computerMove) {
         return playerMove.equals(Move.ROCK.getMove()) && computerMove.equals(Move.SCISSORS.getMove())
