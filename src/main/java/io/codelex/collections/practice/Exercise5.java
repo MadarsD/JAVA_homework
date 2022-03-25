@@ -18,7 +18,6 @@ public class Exercise5 {
 
     public static boolean isHappy_number(int num) {
         Set<Integer> unique = new HashSet<>();
-
         while (unique.add(num)) {
             int value = 0;
             while (num > 0) {

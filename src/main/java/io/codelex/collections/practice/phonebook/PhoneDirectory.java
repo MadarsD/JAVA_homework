@@ -1,11 +1,9 @@
 package io.codelex.collections.practice.phonebook;
 
-import java.util.Arrays;
-import java.util.Map;
 import java.util.TreeMap;
 
 public class PhoneDirectory {
-    private TreeMap<String,String> data;
+    private final TreeMap<String,String> data;
     private int dataCount;
 
     public PhoneDirectory() {
