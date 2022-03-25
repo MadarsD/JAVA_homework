@@ -14,7 +14,7 @@ public class FlightPlanner {
     final Path path = Paths.get(Histogram.class.getResource(file).toURI());
     List<String> list = new ArrayList<>(Files.readAllLines(path, charset));
 
-    Map<String, ArrayList<String>> flights = new HashMap<>();
+    static final Map<String, ArrayList<String>> flights = new HashMap<>();
     static final ArrayList<String> cities = new ArrayList<>();
 
 
@@ -23,38 +23,58 @@ public class FlightPlanner {
 
     public static void main(String[] args) throws IOException, URISyntaxException {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<String> route = new ArrayList<>();
         FlightPlanner planner = new FlightPlanner();
+        ArrayList<String> route = new ArrayList<>();
 
         planner.readFlightEntry();
         System.out.println("what would you like to do:");
-        System.out.println("To display list of the cities press 1");
-        System.out.println("To exit program press #");
-        String input = scanner.nextLine();
+
 
         while (true) {
+            System.out.println();
+            System.out.println("To display list of the cities press 1");
+            System.out.println("To exit program press #");
+            String input = scanner.nextLine();
             if (input.equals(String.valueOf(1))) {
                 planner.displayListOfCities(cities);
             } else if (input.equals("#")) {
                 System.out.println("Good bye!");
                 break;
+            } else {
+                System.out.println("Invalid input, try again!");
+                continue;
             }
 
-            System.out.println("Enter a city from which you would like to start your trip: ");
-            String startCity = scanner.nextLine();
-            route.add(startCity);
-            String current = startCity;
             while (true) {
-                String nextCity = planner.getNextCity(current);
-                route.add(nextCity);
-                if (nextCity.equals(startCity)) break;
-                current = nextCity;
+                System.out.println("Enter a city from which you would like to start your trip: ");
+                try {
+                    String startCity = scanner.nextLine();
+                    route.add(startCity);
+                    String current = startCity;
+                    while (true) {
+                        String nextCity = planner.getNextCity(current);
+                        route.add(nextCity);
+                        if (nextCity.equals(startCity)) break;
+                        current = nextCity;
+                    }
+                    planner.printRoute(route);
+                    break;
+                } catch (NullPointerException e) {
+                    System.out.println("Invalid city, try again!");
+                }
             }
-            planner.printRoute(route);
-            break;
         }
+    }
 
-
+    public void readFlightEntry() throws IOException {
+        for (String line : list) {
+            String[] cities = line.split("->");
+            String fromCity = cities[0].trim();
+            String toCity = cities[1].trim();
+            defineCity(fromCity);
+            defineCity(toCity);
+            getDestinations(fromCity).add(toCity);
+        }
     }
 
     public void defineCity(String cityName) {
@@ -68,16 +88,6 @@ public class FlightPlanner {
         return flights.get(fromCity);
     }
 
-    public void readFlightEntry() throws IOException {
-        for (String line : list) {
-            String[] cities = line.split("->");
-            String fromCity = cities[0].trim();
-            String toCity = cities[1].trim();
-            defineCity(fromCity);
-            defineCity(toCity);
-            getDestinations(fromCity).add(toCity);
-        }
-    }
 
     public void displayListOfCities(ArrayList<String> cities) {
         for (String city : cities) {
@@ -112,7 +122,6 @@ public class FlightPlanner {
             } else {
                 System.out.print(route.get(i) + " -> ");
             }
-
         }
     }
 

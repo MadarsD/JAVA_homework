@@ -16,7 +16,7 @@ public class Exercise1 {
         String[] array = {"Audi", "BMW", "Honda", "Mercedes", "VolksWagen", "Mercedes", "Tesla"};
 
         //todo - replace array with an ArrayList and print out the results
-        ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(array));
+        ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(array));
         System.out.println(arrayList);
 
         //todo - replace array with a HashSet and print out the results

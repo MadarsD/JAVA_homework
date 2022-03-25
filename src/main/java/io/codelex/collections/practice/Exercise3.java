@@ -15,7 +15,7 @@ public class Exercise3 {
         mySet.add("Blue");
         mySet.add("Green");
 
-        System.out.println("Should have 5 elements: " + mySet); //Pay attention on order!
+        System.out.println("Should have 5 elements: " + mySet);
 
         //TODO: iterate through all elements in set
         for (String color : mySet) {
