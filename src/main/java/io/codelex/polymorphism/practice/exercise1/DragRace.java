@@ -1,8 +1,6 @@
 package io.codelex.polymorphism.practice.exercise1;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Take a look at the cars in this package.
@@ -44,15 +42,20 @@ public class DragRace {
             iteration++;
         }
 
-        int fastest = 0;
-        String carName = "";
-        for (Car car : cars) {
-            if (car.showCurrentSpeed() > fastest) {
-                fastest = car.showCurrentSpeed();
-                carName = car.toString();
-            }
-        }
+        Optional<Car> fastest = cars.stream()
+                .max(Comparator.comparingInt(Car::showCurrentSpeed));
 
-        System.out.println("Fastest car is " + carName + " with " + fastest + " km/h");
+        System.out.println(fastest.get() + " with " + fastest.get().showCurrentSpeed() + " kmh/h");
+
+//        int fastest = 0;
+//        String carName = "";
+//        for (Car car : cars) {
+//            if (car.showCurrentSpeed() > fastest) {
+//                fastest = car.showCurrentSpeed();
+//                carName = car.toString();
+//            }
+//        }
+//
+//        System.out.println("Fastest car is " + carName + " with " + fastest + " km/h");
     }
 }
