@@ -2,7 +2,7 @@ package io.codelex.oop.persons;
 
 public class Customer extends Person {
     private final String customerId;
-    private int purchaseCount = 0;
+    private int purchaseCount;
 
     public Customer(String firstName, String lastName, String id, int age, String customerId) {
         super(firstName, lastName, id, age);

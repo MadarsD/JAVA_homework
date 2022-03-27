@@ -1,6 +1,6 @@
 package io.codelex.oop.cars;
 
-public enum engineType {
+public enum EngineType {
     V12,
     V8,
     V6,
