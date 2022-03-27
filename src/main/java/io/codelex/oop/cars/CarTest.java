@@ -16,9 +16,9 @@ public class CarTest {
         System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 
 
-        Car audi = new Car("Audi", "A6", 49999.99, 2021, engineType.V8);
-        Car bmw = new Car("BMW", "M5", 70000, 2020, engineType.V12);
-        Car ford = new Car("Ford", "Focus", 20000, 2019, engineType.S3);
+        Car audi = new Car("Audi", "A6", 49999.99, 2021, EngineType.V8);
+        Car bmw = new Car("BMW", "M5", 70000, 2020, EngineType.V12);
+        Car ford = new Car("Ford", "Focus", 20000, 2019, EngineType.S3);
 
         System.out.println(audi.getName());
         System.out.println(audi.getModel());

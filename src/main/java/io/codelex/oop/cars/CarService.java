@@ -1,7 +1,6 @@
 package io.codelex.oop.cars;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class CarService {
 
@@ -29,7 +28,7 @@ public class CarService {
     public void printV12() {
         System.out.println("Cars in service with V12 engines:");
         for (Car car : cars) {
-            if (car.getEngine() == engineType.V12) {
+            if (car.getEngine() == EngineType.V12) {
                 System.out.println(car.getName() + " " + car.getModel());
             }
         }
@@ -70,10 +69,10 @@ public class CarService {
         System.out.println(cheapest.getName() + " " + cheapest.getModel() + " " + cheapest.getPrice() + " eur");
     }
 
-    public void atLeastThreeManufacturers() {
+    public void atLeastThreeManufacturers(int numberOfManufacturers) {
         System.out.println("Cars with at least three manufacturers:");
         for (Car car : cars) {
-            if (car.getNumberOfManufacturers() >= 3) {
+            if (numberOfManufacturers >= 3) {
                 System.out.println(car.getName() + " " + car.getModel() + " (" + car.getNumberOfManufacturers() + " manufacturers)");
             }
         }
@@ -121,9 +120,9 @@ public class CarService {
         }
     }
 
-    public boolean checkIfCarIsOnList(Car c) {
-        System.out.print("Current " + c.getName() + " " + c.getModel() + " is in our list: ");
-        return cars.contains(c);
+    public boolean checkIfCarIsOnList(Car car) {
+        System.out.print("Current " + car.getName() + " " + car.getModel() + " is in our list: ");
+        return cars.contains(car);
     }
 
     public void findByManufacturer(Manufacturer x) {
@@ -135,43 +134,37 @@ public class CarService {
         }
     }
 
-    public void carsByManufacturer(Manufacturer x, int year) {
-        System.out.println("Cars manufactured by " + x.getName() + " after " + year + " year are:");
+    public void carsByManufacturerAndYear(Manufacturer manufacturer, int year) {
+
         int countAfter = 0;
-        for (Car car : cars) {
-            if (car.getManufacturers().contains(x) && car.getYearOfManufacture() > year) {
-                countAfter++;
-                System.out.println(car.getName() + " " + car.getModel() + " " + car.getYearOfManufacture());
-            }
-        }
-        if(countAfter == 0){
-            System.out.println("None");
-        }
-
-        System.out.println("Cars manufactured by " + x.getName() + " before " + year + " year are:");
         int countBefore = 0;
-        for (Car car : cars) {
-            if (car.getManufacturers().contains(x) && car.getYearOfManufacture() < year) {
-                countBefore++;
-                System.out.println(car.getName() + " " + car.getModel() + " " + car.getYearOfManufacture());
-            }
-        }
-        if(countBefore == 0){
-            System.out.println("None");
-        }
-
-        System.out.println("Cars manufactured by " + x.getName() + " this year are:");
         int count = 0;
+        System.out.println();
         for (Car car : cars) {
-            if (car.getManufacturers().contains(x) && car.getYearOfManufacture() == year) {
+            if (car.relativelyNewCars(manufacturer, year)) {
+                countAfter++;
+                System.out.println("Manufactured by " + manufacturer.getName() + " after " + year + ": " +
+                        car.getName() + " " + car.getModel() + " " + car.getYearOfManufacture());
+            } else if (car.relativelyOldCars(manufacturer, year)) {
+                countBefore++;
+                System.out.println("Manufactured by " + manufacturer.getName() + " before " + year + ": " +
+                        car.getName() + " " + car.getModel() + " " + car.getYearOfManufacture());
+
+            } else if (car.manufacturedAtSpecificYear(manufacturer, year)) {
                 count++;
-                System.out.println(car.getName() + " " + car.getModel() + " " + car.getYearOfManufacture());
+                System.out.println("Manufactured by " + manufacturer.getName() + " this year: "
+                        + car.getName() + " " + car.getModel() + " " + car.getYearOfManufacture());
             }
         }
-        if(count == 0){
-            System.out.println("None");
+        if (countAfter == 0) {
+            System.out.println("Manufactured by " + manufacturer.getName() + " after " + year + ": None");
         }
-
+        if (countBefore == 0) {
+            System.out.println("Manufactured by " + manufacturer.getName() + " before " + year + ": None");
+        }
+        if (count == 0) {
+            System.out.println("Manufactured by " + manufacturer.getName() + " this year: None");
+        }
     }
 
 }

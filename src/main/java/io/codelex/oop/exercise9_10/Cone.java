@@ -28,6 +28,8 @@ public class Cone extends ThreeDShape{
 
     @Override
     public BigDecimal calculateArea() {
-        return new BigDecimal(Math.PI).multiply(radius.pow(2)).setScale(5, RoundingMode.HALF_UP);
+        return new BigDecimal(Math.PI)
+                .multiply(radius.pow(2))
+                .setScale(5, RoundingMode.HALF_UP);
     }
 }

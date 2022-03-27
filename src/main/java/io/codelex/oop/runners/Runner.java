@@ -14,11 +14,11 @@ public enum Runner {
     }
 
     public static void getFitnessLevel(int timeInMinutes){
-        if(timeInMinutes < 120){
+        if(timeInMinutes < ADVANCED.minimumTime){
             System.out.println("Are you Eliud Kipchoge?");
-        } else if (timeInMinutes < 210){
+        } else if (timeInMinutes < INTERMEDIATE.minimumTime){
             System.out.println(Runner.ADVANCED);
-        } else if (timeInMinutes < 300){
+        } else if (timeInMinutes < BEGINNER.minimumTime){
             System.out.println(Runner.INTERMEDIATE);
         } else {
             System.out.println(Runner.BEGINNER);

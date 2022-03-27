@@ -11,10 +11,9 @@ public class Car {
     private double price;
     private final int yearOfManufacture;
     private final List<Manufacturer> manufacturers;
-    private final engineType engine;
-    private int numberOfManufacturers;
+    private final EngineType engine;
 
-    public Car(String name, String model, double price, int yearOfManufacture, engineType engine) {
+    public Car(String name, String model, double price, int yearOfManufacture, EngineType engine) {
         this.name = name;
         this.model = model;
         this.price = price;
@@ -49,12 +48,23 @@ public class Car {
     }
 
     public int getNumberOfManufacturers() {
-        return numberOfManufacturers;
+        return manufacturers.size();
     }
 
     public void addManufacturer(Manufacturer manufacturer){
         manufacturers.add(manufacturer);
-        numberOfManufacturers++;
+    }
+
+    public boolean relativelyNewCars(Manufacturer manufacturer, int year){
+        return manufacturers.contains(manufacturer) && getYearOfManufacture() > year;
+    }
+
+    public boolean relativelyOldCars(Manufacturer manufacturer, int year){
+        return manufacturers.contains(manufacturer) && getYearOfManufacture() < year;
+    }
+
+    public boolean manufacturedAtSpecificYear(Manufacturer manufacturer, int year){
+        return manufacturers.contains(manufacturer) && getYearOfManufacture() == year;
     }
 
     public void printManufacturers(){
@@ -63,7 +73,7 @@ public class Car {
         }
     }
 
-    public engineType getEngine() {
+    public EngineType getEngine() {
         return engine;
     }
 
