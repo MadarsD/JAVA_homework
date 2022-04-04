@@ -5,8 +5,8 @@ public class BasketTest {
         Apple apple = new Apple();
         Mushroom mushroom = new Mushroom();
 
-        Basket<Apple> appleBasket = new Basket<>(apple);
-        Basket<Mushroom> mushroomBasket = new Basket<>(mushroom);
+        Basket<Apple> appleBasket = new Basket<>();
+        Basket<Mushroom> mushroomBasket = new Basket<>();
 
         mushroomBasket.removeFromBasket(mushroom);
 

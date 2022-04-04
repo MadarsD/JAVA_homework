@@ -6,11 +6,9 @@ import java.util.List;
 public class Basket<T> {
 
     private static final int capacity = 10;
-    private final T content;
     private final List<T> items;
 
-    public Basket(T content) {
-        this.content = content;
+    public Basket() {
         this.items = new ArrayList<>();
     }
 
