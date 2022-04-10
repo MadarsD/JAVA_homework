@@ -3,8 +3,8 @@ package io.codelex.collections.practice.phonebook;
 import java.util.Objects;
 
 public class PhoneEntry {
-    String name;
-    String number;
+    private String name;
+    private String number;
 
     public PhoneEntry(String name, String number) {
         this.name = name;

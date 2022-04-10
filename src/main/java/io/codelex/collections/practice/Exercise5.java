@@ -9,14 +9,15 @@ public class Exercise5 {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Input a number: ");
         int num = scanner.nextInt();
-        if (isHappy_number(num)) {
+        if (isHappyNumber(num)) {
             System.out.println(num + " is happy!");
         } else {
             System.out.println(num + " is not happy!");
         }
     }
 
-    public static boolean isHappy_number(int num) {
+    public static boolean isHappyNumber(int num) {
+        int happyNumber = 1;
         Set<Integer> unique = new HashSet<>();
         while (unique.add(num)) {
             int value = 0;
@@ -26,8 +27,7 @@ public class Exercise5 {
             }
             num = value;
         }
-
-        return num == 1;
+        return num == happyNumber;
     }
 
 }
