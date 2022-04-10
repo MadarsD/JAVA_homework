@@ -54,7 +54,9 @@ public class FlightPlanner {
                     while (true) {
                         String nextCity = planner.getNextCity(current);
                         route.add(nextCity);
-                        if (nextCity.equals(startCity)) break;
+                        if (nextCity.equals(startCity)) {
+                            break;
+                        }
                         current = nextCity;
                     }
                     planner.printRoute(route);
@@ -66,7 +68,7 @@ public class FlightPlanner {
         }
     }
 
-    public void readFlightEntry() throws IOException {
+    private void readFlightEntry() throws IOException {
         for (String line : list) {
             String[] cities = line.split("->");
             String fromCity = cities[0].trim();

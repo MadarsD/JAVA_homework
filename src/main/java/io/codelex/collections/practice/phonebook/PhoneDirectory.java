@@ -15,7 +15,7 @@ public class PhoneDirectory {
         if (name == null || number == null) {
             throw new IllegalArgumentException("name and number cannot be null");
         }
-        if (!find(name)) {
+        if (!isContactPresent(name)) {
             PhoneEntry newEntry = new PhoneEntry(name, number);
             data.put(newEntry.getName(), newEntry.getNumber());
             dataCount++;
@@ -25,7 +25,7 @@ public class PhoneDirectory {
         }
     }
 
-    private boolean find(String name) {
+    private boolean isContactPresent(String name) {
         return data.containsKey(name);
     }
 
