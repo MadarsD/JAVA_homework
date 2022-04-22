@@ -33,11 +33,12 @@ public class DragRace {
 
         int iteration = 1;
         while (iteration <= 10) {
-            if (iteration == 3) {
-                lexus.useNitrousOxideEngine();
-            }
             for (Car car : cars) {
                 car.speedUp();
+                System.out.println(car + " " + car.showCurrentSpeed());
+                if (iteration == 3 && car instanceof Boost) {
+                    ((Boost) car).useNitrousOxideEngine();
+                }
             }
             iteration++;
         }
@@ -47,15 +48,5 @@ public class DragRace {
 
         System.out.println(fastest.get() + " with " + fastest.get().showCurrentSpeed() + " kmh/h");
 
-//        int fastest = 0;
-//        String carName = "";
-//        for (Car car : cars) {
-//            if (car.showCurrentSpeed() > fastest) {
-//                fastest = car.showCurrentSpeed();
-//                carName = car.toString();
-//            }
-//        }
-//
-//        System.out.println("Fastest car is " + carName + " with " + fastest + " km/h");
     }
 }

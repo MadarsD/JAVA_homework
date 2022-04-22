@@ -14,43 +14,39 @@ public class MainTest {
 
         List<String> animals = new ArrayList<>();
 
-        Vegetable vegetable = new Vegetable(0);
-        Meat meat = new Meat(0);
-
-        Cat cat = new Cat(null, "Cat", 0, 0, null, null);
-        Tiger tiger = new Tiger(null, "Tiger", 0, 0, null);
-        Mouse mouse = new Mouse(null, "Mouse", 0, 0, null);
-        Zebra zebra = new Zebra(null, "Zebra", 0, 0, null);
-
-
         boolean flag = false;
         System.out.println("You will enter animal type animalName Weight livingRegion and breed(in case it is cat)");
 
         while (!flag) {
             System.out.println("Enter animal type (cat, tiger, zebra or mouse): ");
             String animalType = scanner.next().toLowerCase(Locale.ROOT);
+
             System.out.println("Enter animal name: ");
             String animalName = scanner.next();
+
             System.out.println("Enter animal weight: ");
             double animalWeight = scanner.nextDouble();
             format.format(animalWeight);
             scanner.nextLine();
+
             System.out.println("Enter animal livingRegion: ");
             String animalLivingRegion = scanner.nextLine();
             String breed = "";
-            if(animalType.equals("cat")){
+            if (animalType.equals("cat")) {
                 System.out.println("Enter cats breed: ");
                 breed = scanner.next();
             }
 
             System.out.println("Enter food type (meat or vegetable): ");
             String foodType = scanner.next().toLowerCase(Locale.ROOT);
+
             System.out.println("Enter food quantity: ");
             int quantity = scanner.nextInt();
 
 
             switch (animalType) {
                 case "cat":
+                    Cat cat = new Cat(null, "Cat", 0, 0, null, null);
                     cat.setAnimalName(animalName);
                     cat.setAnimalWeight(animalWeight);
                     cat.setLivingRegion(animalLivingRegion);
@@ -62,6 +58,7 @@ public class MainTest {
                     break;
 
                 case "tiger":
+                    Tiger tiger = new Tiger(null, "Tiger", 0, 0, null);
                     tiger.setAnimalName(animalName);
                     tiger.setAnimalWeight(animalWeight);
                     tiger.setLivingRegion(animalLivingRegion);
@@ -81,6 +78,7 @@ public class MainTest {
                     break;
 
                 case "mouse":
+                    Mouse mouse = new Mouse(null, "Mouse", 0, 0, null);
                     mouse.setAnimalName(animalName);
                     mouse.setAnimalWeight(animalWeight);
                     mouse.setLivingRegion(animalLivingRegion);
@@ -100,6 +98,7 @@ public class MainTest {
                     break;
 
                 case "zebra":
+                    Zebra zebra = new Zebra(null, "Zebra", 0, 0, null);
                     zebra.setAnimalName(animalName);
                     zebra.setAnimalWeight(animalWeight);
                     zebra.setLivingRegion(animalLivingRegion);
@@ -120,6 +119,5 @@ public class MainTest {
             }
             System.out.println(animals);
         }
-
     }
 }
