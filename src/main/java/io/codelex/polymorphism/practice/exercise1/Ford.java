@@ -1,6 +1,6 @@
 package io.codelex.polymorphism.practice.exercise1;
 
-public class Ford implements Car{
+public class Ford implements Car {
     private String name;
     private Integer currentSpeed = 0;
 
@@ -34,6 +34,6 @@ public class Ford implements Car{
 
     @Override
     public String toString() {
-        return  name;
+        return name;
     }
 }
